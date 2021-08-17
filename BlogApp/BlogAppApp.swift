@@ -11,7 +11,12 @@ import SwiftUI
 struct BlogAppApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            StateView()
+                .environmentObject(UserServices())
+                .environmentObject(PostServices())
+                .environmentObject(CurrentPostSelected())
+
+                
         }
     }
 }
