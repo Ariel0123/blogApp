@@ -52,7 +52,7 @@ struct HomeView: View {
 
         .toolbar {
             ToolbarItemGroup(placement: .navigationBarLeading) {
-                Text((userService.userInfo != nil) ? "Welcome "+userService.userInfo!.name : "")
+                Text((userService.userInfo != nil) ? "Welcome "+userService.userInfo!.name.capitalized : "")
 
             }
             ToolbarItemGroup(placement: .navigationBarTrailing) {

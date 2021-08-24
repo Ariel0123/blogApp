@@ -24,7 +24,7 @@ struct DetailView: View {
                 .padding(.bottom)
                 
                 
-                Text(post.username)
+                Text(post.username.capitalized)
                     .font(.caption)
                 
                 Text(post.date)
