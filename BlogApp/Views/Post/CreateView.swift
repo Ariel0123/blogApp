@@ -9,10 +9,10 @@ import SwiftUI
 
 
 struct CreateView: View {
-    
+
     @EnvironmentObject var postService: PostServices
     
-    @Binding var tabSelection: Int
+   // @Binding var tabSelection: Int
     
     @State var showImagePicker: Bool = false
     @State var image = UIImage()
@@ -129,7 +129,7 @@ struct CreateView: View {
                 postService.runCreatePost(title: title, description: description, image: image, name: name, format: format)
                 
                         self.clearFiels()
-                        self.tabSelection = 1
+                        postService.tabSelection = 1
               
             }
                 
@@ -149,7 +149,8 @@ struct CreateView: View {
 
 struct CreateView_Previews: PreviewProvider {
     static var previews: some View {
-        CreateView(tabSelection: .constant(1))
+        CreateView()
+            .environmentObject(PostServices())
     }
 }
 

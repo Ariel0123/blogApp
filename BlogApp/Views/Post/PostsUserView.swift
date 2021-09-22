@@ -34,7 +34,6 @@ struct PostsUserView: View {
                     VStack(spacing:20){
                         ForEach(postService.posts, id: \._id){ post in
                             CardView(post: post)
-                                .environmentObject(postService)
                              
                         }
                     }.padding(.horizontal)
@@ -78,5 +77,8 @@ struct PostsUserView: View {
 struct PostsUserView_Previews: PreviewProvider {
     static var previews: some View {
         PostsUserView()
+            .environmentObject(UserServices())
+            .environmentObject(PostServices())
+            .environmentObject(CurrentPostSelected())
     }
 }

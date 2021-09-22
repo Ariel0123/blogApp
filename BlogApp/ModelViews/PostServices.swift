@@ -22,6 +22,8 @@ class PostServices: ObservableObject{
     
     @Published var postError: PostUniversalErrorsMessage? = nil
 
+    @Published var tabSelection = 0
+
 
     let baseURL = "http://localhost:4000/api"
     
@@ -356,8 +358,11 @@ class PostServices: ObservableObject{
                 case .success(_):
                     DispatchQueue.main.async {
                 
-                    self.runGetPosts()
-                    self.runGetPostsCurrentUser()
+                        if self.tabSelection == 0{
+                            self.runGetPosts()
+                        }else if self.tabSelection == 1{
+                            self.runGetPostsCurrentUser()
+                        }
                     }
                     
                 case .failure(let error):

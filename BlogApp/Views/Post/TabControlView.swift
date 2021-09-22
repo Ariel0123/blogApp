@@ -8,9 +8,10 @@
 import SwiftUI
 
 struct TabControlView: View {
+    @EnvironmentObject var postService: PostServices
+
     
-    
-    @State private var tabSelection = 0
+    //@State private var tabSelection = 0
     
     let tabImages = ["house.fill", "list.bullet.rectangle", "person.fill", "plus.circle.fill"]
     
@@ -21,7 +22,7 @@ struct TabControlView: View {
             ZStack{
                 
                 
-                switch tabSelection {
+                switch postService.tabSelection {
                 
                 
                 case 0:
@@ -29,25 +30,27 @@ struct TabControlView: View {
                         HomeView()
                     }
                     .accentColor(.white)
+                    .navigationViewStyle(StackNavigationViewStyle())
 
                 case 1:
                     NavigationView{
                         PostsUserView()
                     }
                     .accentColor(.white)
+                    .navigationViewStyle(StackNavigationViewStyle())
 
                     
                 case 2:
                     NavigationView{
                         ProfileView()
-                    }
+                    }.navigationViewStyle(StackNavigationViewStyle())
                     
                 default:
                     NavigationView{
-                        CreateView(tabSelection: $tabSelection)
+                        CreateView()
                         
                         
-                    }
+                    }.navigationViewStyle(StackNavigationViewStyle())
                 }
                 
             }
@@ -58,13 +61,13 @@ struct TabControlView: View {
             HStack{
                 ForEach(0..<4){ num in
                     Button(action: {
-                        tabSelection = num
+                        postService.tabSelection = num
                         
                     }, label: {
                         Spacer()
                         Image(systemName: tabImages[num])
                             .font(.system(size: 22, weight: .bold))
-                            .foregroundColor(tabSelection == num ? .blue : .gray)
+                            .foregroundColor(postService.tabSelection == num ? .blue : .gray)
                         Spacer()
                     })
                 }
@@ -78,5 +81,6 @@ struct TabControlView: View {
 struct TabControlView_Previews: PreviewProvider {
     static var previews: some View {
         TabControlView()
+            .environmentObject(PostServices())
     }
 }

@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import Kingfisher
 
 
 
@@ -24,9 +23,7 @@ struct CardView: View {
         ZStack{
             
         
-            KFImage(URL(string: "http://localhost:4000/"+post.image))
-                .resizable()
-                .scaledToFill()
+            ImageCache("http://localhost:4000/"+post.image)
                 .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, maxHeight: 380)
                 .overlay(Color.black.opacity(0.2))
             
@@ -128,6 +125,9 @@ struct CardView: View {
 struct CardView_Previews: PreviewProvider {
     static var previews: some View {
         CardView(post: PostModel(_id: "", title: "", description: "", image: "", author: "", username: "",  date: ""))
+            .environmentObject(UserServices())
+            .environmentObject(PostServices())
+            .environmentObject(CurrentPostSelected())
     }
 }
 

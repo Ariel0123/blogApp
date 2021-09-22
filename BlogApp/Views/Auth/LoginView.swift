@@ -11,10 +11,11 @@ import SwiftUI
 
 struct LoginView: View {
     
+    @EnvironmentObject var userService: UserServices
+
     @State var email = ""
     @State var password = ""
     
-    @EnvironmentObject var userService: UserServices
     
     
     var body: some View {
@@ -30,6 +31,10 @@ struct LoginView: View {
         
             VStack(alignment: .leading){
             TextField("Email", text: $email)
+                    .textContentType(.emailAddress)
+                    .keyboardType(.emailAddress)
+                    .autocapitalization(.none)
+                
             Divider()
             SecureField("Password", text: $password)
                 
@@ -133,5 +138,6 @@ struct LoginView: View {
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
         LoginView()
+            .environmentObject(UserServices())
     }
 }

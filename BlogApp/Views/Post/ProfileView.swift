@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import Kingfisher
+
 
 struct ProfileView: View {
     
@@ -46,9 +46,10 @@ struct ProfileView: View {
                          
                             if ((userService.userProfile?.photoUser) != nil) && (image.cgImage == nil){
                                 
-                                KFImage(URL(string: "http://localhost:4000/"+userService.userProfile!.photoUser!))
-                                    .resizable()
-                                    .scaledToFit()
+                                ImageCache("http://localhost:4000/"+userService.userProfile!.photoUser!, isFit: true)
+                                //KFImage(URL(string: "http://localhost:4000/"+userService.userProfile!.photoUser!))
+                                    //.resizable()
+                                    //.scaledToFit()
                                     .frame(width: 180, height: 180, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                                     .clipShape(Capsule())
                                     .overlay(Circle().stroke(Color.gray, lineWidth: 3))
@@ -272,5 +273,7 @@ struct ProfileView: View {
 struct ProfileView_Previews: PreviewProvider {
     static var previews: some View {
         ProfileView()
+            .environmentObject(UserServices())
+          
     }
 }

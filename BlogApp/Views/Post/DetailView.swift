@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import Kingfisher
 
 struct DetailView: View {
     
@@ -14,9 +13,8 @@ struct DetailView: View {
     
     var body: some View {
         ScrollView(showsIndicators: false){
-            KFImage(URL(string: "http://localhost:4000/"+post.image))
-                .resizable()
-                .scaledToFit()
+            ImageCache("http://localhost:4000/"+post.image, isFit: true)
+               
             VStack(alignment: .leading, spacing:0){
             
                 Text(post.title)

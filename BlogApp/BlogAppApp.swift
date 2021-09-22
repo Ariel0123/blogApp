@@ -9,12 +9,19 @@ import SwiftUI
 
 @main
 struct BlogAppApp: App {
+    
+    @StateObject private var userServices = UserServices()
+    @StateObject private var postServices = PostServices()
+    @StateObject private var currentPost = CurrentPostSelected()
+
+
+    
     var body: some Scene {
         WindowGroup {
             StateView()
-                .environmentObject(UserServices())
-                .environmentObject(PostServices())
-                .environmentObject(CurrentPostSelected())
+                .environmentObject(userServices)
+                .environmentObject(postServices)
+                .environmentObject(currentPost)
 
                 
         }

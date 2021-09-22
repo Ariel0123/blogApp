@@ -33,7 +33,6 @@ struct HomeView: View {
                     VStack(spacing:20){
                         ForEach(postService.postsAll, id: \._id){ post in
                             CardView(post: post)
-                                .environmentObject(postService)
                             
 
 
@@ -71,7 +70,6 @@ struct HomeView: View {
         }
         .fullScreenCover(isPresented: $selectedPost.showEdit){
             EditView()
-                .environmentObject(postService)
         }
 
         
@@ -82,6 +80,9 @@ struct HomeView: View {
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         HomeView()
+            .environmentObject(UserServices())
+            .environmentObject(PostServices())
+            .environmentObject(CurrentPostSelected())
           
     }
 }

@@ -19,7 +19,8 @@ struct StateView: View {
         }else{
             NavigationView{
             LoginView()
-            }
+            }.navigationViewStyle(StackNavigationViewStyle())
+
             
         }
         
@@ -29,5 +30,6 @@ struct StateView: View {
 struct StateView_Previews: PreviewProvider {
     static var previews: some View {
         StateView()
+            .environmentObject(UserServices())
     }
 }

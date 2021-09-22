@@ -31,6 +31,9 @@ struct RegisterView: View {
             TextField("Name", text: $name)
             Divider()
             TextField("Email", text: $email)
+                    .textContentType(.emailAddress)
+                    .keyboardType(.emailAddress)
+                    .autocapitalization(.none)
             Divider()
                 SecureField("Password", text: $password)
                 Divider()
@@ -142,5 +145,7 @@ struct RegisterView: View {
 struct RegisterView_Previews: PreviewProvider {
     static var previews: some View {
         RegisterView()
+            .environmentObject(UserServices())
+
     }
 }
