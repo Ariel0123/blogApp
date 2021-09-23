@@ -163,13 +163,13 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		5B8E79E026C4A88900AE0789 /* ModelViews */ = {
+		5B8E79E026C4A88900AE0789 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
 				5B8E79E526C4AA6900AE0789 /* UserServices.swift */,
 				5B1F581D26C4F3220012ABF6 /* PostServices.swift */,
 			);
-			path = ModelViews;
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		5B8E79EA26C4AE2B00AE0789 /* Errors */ = {
@@ -204,7 +204,7 @@
 			children = (
 				5B1F581826C4E6BE0012ABF6 /* Utils */,
 				5B8E79EA26C4AE2B00AE0789 /* Errors */,
-				5B8E79E026C4A88900AE0789 /* ModelViews */,
+				5B8E79E026C4A88900AE0789 /* ViewModels */,
 				5B8E79DF26C4A88300AE0789 /* Views */,
 				5B8E79DE26C4A87900AE0789 /* Models */,
 				5B9D48DB26C3C38600DBCF9C /* BlogAppApp.swift */,
